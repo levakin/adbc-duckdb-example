@@ -63,8 +63,7 @@ func selectAll(ctx context.Context, cnxn adbc.Connection) error {
 	defer rdr.Release()
 
 	for rdr.Next() {
-		rec := rdr.Record()
-		rec.Release()
+		_ = rdr.Record()
 	}
 
 	if err := rdr.Err(); err != nil {
