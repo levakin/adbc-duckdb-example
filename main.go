@@ -38,9 +38,9 @@ func Run(ctx context.Context) error {
 		return err
 	}
 
-	if err := selectAll(ctx, cnxn); err != nil {
-		return err
-	}
+	// if err := selectAll(ctx, cnxn); err != nil {
+	// 	return err
+	// }
 
 	return nil
 }
@@ -91,9 +91,9 @@ func countRowsInTable(ctx context.Context, cnxn adbc.Connection) error {
 	defer rdr.Release()
 
 	for rdr.Next() {
-		_ = rdr.Record()
+		rec := rdr.Record()
 
-		// fmt.Println(rec.Column(0).String())
+		fmt.Println(rec.Column(0).String())
 	}
 
 	if err := rdr.Err(); err != nil {
