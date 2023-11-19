@@ -92,11 +92,9 @@ func countRowsInTable(ctx context.Context, cnxn adbc.Connection) error {
 	defer rdr.Release()
 
 	for rdr.Next() {
-		rec := rdr.Record()
+		_ = rdr.Record()
 
 		// fmt.Println(rec.Column(0).String())
-
-		rec.Release()
 	}
 
 	if err := rdr.Err(); err != nil {
